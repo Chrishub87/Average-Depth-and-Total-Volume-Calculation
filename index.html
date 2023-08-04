@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floor Deep Area A</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <h1> Floor Deep Area A </h1>
+    <p>
+        First Enter the length and width measurements of the floor area in meters
+        into their respective input fields.
+        As you type the values, the Total Volume cell on the table will automatically update
+        and display the calculated total cubes from all the other values.
+    </p>
+
+    <h2> Area A </h2>
+    <table>
+        <tr>
+            <td><label for="lengthInput">Length (m):</label></td>
+            <td><input type="number" id="lengthInput"></td>
+        </tr>
+        <tr>
+            <td><label for="widthInput">Width (m):</label></td>
+            <td><input type="number" id="widthInput"></td>
+        </tr>
+        <tr>
+            <td><p>Total Area:</p></td>
+            <td><span id="area">0</span> m<sup>2</sup></td>
+        </tr>
+        <tr>
+            <td><p>Total Volume:</p></td>
+            <td><span id="totalVolume">0</span> m<sup>3</sup>
+        </tr>
+        <tr>
+            <td><p>Average Depth:</p></td>
+            <td><span id="averageDepth">0</span></td>
+        </tr>
+    </table>
+
+    <h3> Deep Measurements </h3>
+    <table>
+        <tr>
+            <th>Depth</th>
+            <th>Depth No.</th>
+            <th>+</th>
+            <th>-</th>
+        </tr>
+        <tr class="depthRow">
+            <td>60</td>
+            <td class="depthValue">0</td>
+            <td><button class="plusButton" onclick="changeDepth(this, 1)">+</button></td>
+            <td><button class="minusButton" onclick="changeDepth(this, -1)">-</button></td>
+        </tr>
+        <tr class="depthRow">
+            <td>65</td>
+            <td class="depthValue">0</td>
+            <td><button class="plusButton" onclick="changeDepth(this, 1)">+</button></td>
+            <td><button class="minusButton" onclick="changeDepth(this, -1)">-</button></td>
+        </tr>
+        <tr class="depthRow">
+            <td>70</td>
+            <td class="depthValue">0</td>
+            <td><button class="plusButton" onclick="changeDepth(this, 1)">+</button></td>
+            <td><button class="minusButton" onclick="changeDepth(this, -1)">-</button></td>
+        </tr>
+        <tr class="depthRow">
+            <td>75</td>
+            <td class="depthValue">0</td>
+            <td><button class="plusButton" onclick="changeDepth(this, 1)">+</button></td>
+            <td><button class="minusButton" onclick="changeDepth(this, -1)">-</button></td>
+        </tr>
+        <tr class="depthRow">
+            <td>80</td>
+            <td class="depthValue">0</td>
+            <td><button class="plusButton" onclick="changeDepth(this, 1)">+</button></td>
+            <td><button class="minusButton" onclick="changeDepth(this, -1)">-</button></td>
+        </tr>
+        <tr class="depthRow">
+            <td>85</td>
+            <td class="depthValue">0</td>
+            <td><button class="plusButton" onclick="changeDepth(this, 1)">+</button></td>
+            <td><button class="minusButton" onclick="changeDepth(this, -1)">-</button></td>
+        </tr>
+        <tr class="depthRow">
+            <td>90</td>
+            <td class="depthValue">0</td>
+            <td><button class="plusButton" onclick="changeDepth(this, 1)">+</button></td>
+            <td><button class="minusButton" onclick="changeDepth(this, -1)">-</button></td>
+        </tr>
+        <tr class="depthRow">
+            <td>95</td>
+            <td class="depthValue">0</td>
+            <td><button class="plusButton" onclick="changeDepth(this, 1)">+</button></td>
+            <td><button class="minusButton" onclick="changeDepth(this, -1)">-</button></td>
+        </tr>
+        <tr class="depthRow">
+            <td>100</td>
+            <td class="depthValue">0</td>
+            <td><button class="plusButton" onclick="changeDepth(this, 1)">+</button></td>
+            <td><button class="minusButton" onclick="changeDepth(this, -1)">-</button></td>
+        </tr>
+        <tr class="depthRow">
+            <td>105</td>
+            <td class="depthValue">0</td>
+            <td><button class="plusButton" onclick="changeDepth(this, 1)">+</button></td>
+            <td><button class="minusButton" onclick="changeDepth(this, -1)">-</button></td>
+        </tr>
+        <tr class="depthRow">
+            <td>110</td>
+            <td class="depthValue">0</td>
+            <td><button class="plusButton" onclick="changeDepth(this, 1)">+</button></td>
+            <td><button class="minusButton" onclick="changeDepth(this, -1)">-</button></td>
+        </tr>
+        <tr class="depthRow">
+            <td>115</td>
+            <td class="depthValue">0</td>
+            <td><button class="plusButton" onclick="changeDepth(this, 1)">+</button></td>
+            <td><button class="minusButton" onclick="changeDepth(this, -1)">-</button></td>
+        </tr>
+        <tr class="depthRow">
+            <td>120</td>
+            <td class="depthValue">0</td>
+            <td><button class="plusButton" onclick="changeDepth(this, 1)">+</button></td>
+            <td><button class="minusButton" onclick="changeDepth(this, -1)">-</button></td>
+        </tr>
+        <tr class="depthRow">
+            <td>125</td>
+            <td class="depthValue">0</td>
+            <td><button class="plusButton" onclick="changeDepth(this, 1)">+</button></td>
+            <td><button class="minusButton" onclick="changeDepth(this, -1)">-</button></td>
+        </tr>
+        <tr class="depthRow">
+            <td>130</td>
+            <td class="depthValue">0</td>
+            <td><button class="plusButton" onclick="changeDepth(this, 1)">+</button></td>
+            <td><button class="minusButton" onclick="changeDepth(this, -1)">-</button></td>
+        </tr>
+        <tr class="depthRow">
+            <td>135</td>
+            <td class="depthValue">0</td>
+            <td><button class="plusButton" onclick="changeDepth(this, 1)">+</button></td>
+            <td><button class="minusButton" onclick="changeDepth(this, -1)">-</button></td>
+        </tr>
+        <tr class="depthRow">
+            <td>140</td>
+            <td class="depthValue">0</td>
+            <td><button class="plusButton" onclick="changeDepth(this, 1)">+</button></td>
+            <td><button class="minusButton" onclick="changeDepth(this, -1)">-</button></td>
+        </tr>
+        <tr class="depthRow">
+            <td>145</td>
+            <td class="depthValue">0</td>
+            <td><button class="plusButton" onclick="changeDepth(this, 1)">+</button></td>
+            <td><button class="minusButton" onclick="changeDepth(this, -1)">-</button></td>
+        </tr>
+        <tr class="depthRow">
+            <td>150</td>
+            <td class="depthValue">0</td>
+            <td><button class="plusButton" onclick="changeDepth(this, 1)">+</button></td>
+            <td><button class="minusButton" onclick="changeDepth(this, -1)">-</button></td>
+        </tr>
+        <tr class="depthRow">
+            <td>155</td>
+            <td class="depthValue">0</td>
+            <td><button class="plusButton" onclick="changeDepth(this, 1)">+</button></td>
+            <td><button class="minusButton" onclick="changeDepth(this, -1)">-</button></td>
+        </tr>
+        <tr class="depthRow">
+            <td>160</td>
+            <td class="depthValue">0</td>
+            <td><button class="plusButton" onclick="changeDepth(this, 1)">+</button></td>
+            <td><button class="minusButton" onclick="changeDepth(this, -1)">-</button></td>
+        </tr>
+        <!-- Add more rows as needed -->
+    </table>
+    <script src="script.js"></script>
+</body>
+</html>
