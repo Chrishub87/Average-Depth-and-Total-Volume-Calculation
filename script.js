@@ -1,15 +1,49 @@
+// Global state for total area
+let currentTotalArea = 0;
+let areaCount = 0;
+
+function addArea() {
+    const areasContainer = document.getElementById('areas');
+    const index = areaCount++;
+    const areaDiv = document.createElement('div');
+    areaDiv.className = 'area';
+    const label = String.fromCharCode(65 + index); // A, B, C ...
+    areaDiv.innerHTML = `
+        <h2>Area ${label}</h2>
+        <table>
+            <tr>
+                <td><label>Length (m):</label></td>
+                <td><input type="number" class="lengthInput"></td>
+            </tr>
+            <tr>
+                <td><label>Width (m):</label></td>
+                <td><input type="number" class="widthInput"></td>
+            </tr>
+            <tr>
+                <td><p>Area:</p></td>
+                <td><span class="areaValue">0</span> m<sup>2</sup></td>
+            </tr>
+        </table>
+    `;
+    areasContainer.appendChild(areaDiv);
+
+    const lengthInput = areaDiv.querySelector('.lengthInput');
+    const widthInput = areaDiv.querySelector('.widthInput');
+    lengthInput.addEventListener('input', calculate);
+    widthInput.addEventListener('input', calculate);
+}
+
 function calculate() {
-    const lengthInput = document.getElementById("lengthInput");
-    const widthInput = document.getElementById("widthInput");
-
-    const lengthMetres = parseFloat(lengthInput.value) || 0;
-    const widthMetres = parseFloat(widthInput.value) || 0;
-
-    const areaMetres = lengthMetres * widthMetres;
-
-    const areaOutput = document.getElementById("area");
-    areaOutput.innerHTML = areaMetres.toFixed(2);
-
+    currentTotalArea = 0;
+    const areaDivs = document.querySelectorAll('#areas .area');
+    areaDivs.forEach(div => {
+        const length = parseFloat(div.querySelector('.lengthInput').value) || 0;
+        const width = parseFloat(div.querySelector('.widthInput').value) || 0;
+        const area = length * width;
+        div.querySelector('.areaValue').textContent = area.toFixed(2);
+        currentTotalArea += area;
+    });
+    document.getElementById('totalArea').textContent = currentTotalArea.toFixed(2);
     calculateTotalVolume();
 }
 
@@ -83,12 +117,10 @@ function calculateTotalVolume() {
 
     const averageDepthOutput = document.getElementById('averageDepth');
     const totalVolumeOutput = document.getElementById('totalVolume');
-    const areaOutput = document.getElementById('area');
 
     averageDepthOutput.innerHTML = (averageDepthMeters * 1000).toFixed(2) + ' mm';
 
-    const totalArea = parseFloat(areaOutput.innerHTML);
-    const totalVolume = totalArea * averageDepthMeters;
+    const totalVolume = currentTotalArea * averageDepthMeters;
     totalVolumeOutput.innerHTML = totalVolume.toFixed(2);
 }
 
@@ -103,11 +135,63 @@ function changeDepth(button, increment) {
     }
 }
 
-calculate();
+// Premium handling
+function applyPremium() {
+    document.querySelectorAll('.ad-slot').forEach(el => el.style.display = 'none');
+    const addAreaBtn = document.getElementById('addArea');
+    addAreaBtn.style.display = 'block';
+}
 
-document.getElementById('lengthInput').addEventListener('input', calculate);
-document.getElementById('widthInput').addEventListener('input', calculate);
-document.getElementById('generateDips').addEventListener('click', generateDips);
-document.getElementById('unitSelect').addEventListener('change', generateDips);
-document.getElementById('minDepthInput').addEventListener('input', generateDips);
-document.getElementById('maxDepthInput').addEventListener('input', generateDips);
+function checkPremium() {
+    if (localStorage.getItem('premium') === 'true') {
+        applyPremium();
+    }
+}
+
+async function buyPremium() {
+    if (window.Stripe) {
+        const stripe = Stripe('pk_test_replace_with_key');
+        try {
+            const { error } = await stripe.redirectToCheckout({
+                lineItems: [{ price: 'price_replace_with_id', quantity: 1 }],
+                mode: 'payment',
+                successUrl: window.location.href + '?success=true',
+                cancelUrl: window.location.href
+            });
+            if (error) {
+                console.error(error);
+            }
+        } catch (e) {
+            console.error(e);
+        }
+    } else {
+        // Fallback for environments without Stripe
+        simulatePremiumPurchase();
+    }
+}
+
+function simulatePremiumPurchase() {
+    localStorage.setItem('premium', 'true');
+    applyPremium();
+}
+
+function init() {
+    // check success from Stripe redirect
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('success') === 'true') {
+        simulatePremiumPurchase();
+    }
+
+    checkPremium();
+
+    addArea(); // initial area
+
+    document.getElementById('buyConcreasy').addEventListener('click', buyPremium);
+    document.getElementById('addArea').addEventListener('click', addArea);
+    document.getElementById('generateDips').addEventListener('click', generateDips);
+    document.getElementById('unitSelect').addEventListener('change', generateDips);
+    document.getElementById('minDepthInput').addEventListener('input', generateDips);
+    document.getElementById('maxDepthInput').addEventListener('input', generateDips);
+}
+
+window.addEventListener('DOMContentLoaded', init);

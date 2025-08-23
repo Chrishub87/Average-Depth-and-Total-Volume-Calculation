@@ -16,6 +16,17 @@ body {
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
+.ad-slot {
+    background: #eee;
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.area {
+    margin-bottom: 20px;
+}
+
 h1 {
     text-align: center;
     margin-bottom: 20px;
