@@ -4,65 +4,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Volume Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <h1>Volume Calculator</h1>
-    <p>
-        Enter the length and width measurements of the floor area in meters
-        into their respective input fields. As you type the values, the Total Volume
-        cell on the table will automatically update and display the calculated total cubes from
-        all the other values.
-    </p>
+    <div class="container">
+        <h1>Volume Calculator</h1>
+        <p>
+            Enter the length and width measurements of the floor area in meters
+            into their respective input fields. As you type the values, the Total Volume
+            cell on the table will automatically update and display the calculated total cubes from
+            all the other values.
+        </p>
 
-    <h2>Area A</h2>
-    <table>
-        <tr>
-            <td><label for="lengthInput">Length (m):</label></td>
-            <td><input type="number" id="lengthInput"></td>
-        </tr>
-        <tr>
-            <td><label for="widthInput">Width (m):</label></td>
-            <td><input type="number" id="widthInput"></td>
-        </tr>
-        <tr>
-            <td><p>Total Area:</p></td>
-            <td><span id="area">0</span> m<sup>2</sup></td>
-        </tr>
-        <tr>
-            <td><p>Total Volume:</p></td>
-            <td><span id="totalVolume">0</span> m<sup>3</sup></td>
-        </tr>
-        <tr>
-            <td><p>Average Depth:</p></td>
-            <td><span id="averageDepth">0 mm</span></td>
-        </tr>
-    </table>
+        <h2>Area A</h2>
+        <table>
+            <tr>
+                <td><label for="lengthInput">Length (m):</label></td>
+                <td><input type="number" id="lengthInput"></td>
+            </tr>
+            <tr>
+                <td><label for="widthInput">Width (m):</label></td>
+                <td><input type="number" id="widthInput"></td>
+            </tr>
+            <tr>
+                <td><p>Total Area:</p></td>
+                <td><span id="area">0</span> m<sup>2</sup></td>
+            </tr>
+            <tr>
+                <td><p>Total Volume:</p></td>
+                <td><span id="totalVolume">0</span> m<sup>3</sup></td>
+            </tr>
+            <tr>
+                <td><p>Average Depth:</p></td>
+                <td><span id="averageDepth">0 mm</span></td>
+            </tr>
+        </table>
 
-    <h3>Dip Settings</h3>
-    <div id="dipConfig">
-        <label for="unitSelect">Units:</label>
-        <select id="unitSelect">
-            <option value="mm">mm</option>
-            <option value="cm">cm</option>
-            <option value="in">in</option>
-        </select>
-        <label for="minDepthInput">Min Depth:</label>
-        <input type="number" id="minDepthInput">
-        <label for="maxDepthInput">Max Depth:</label>
-        <input type="number" id="maxDepthInput">
-        <button id="generateDips">Generate Dips</button>
+        <h3>Dip Settings</h3>
+        <div id="dipConfig">
+            <label for="unitSelect">Units:</label>
+            <select id="unitSelect">
+                <option value="mm">mm</option>
+                <option value="cm">cm</option>
+                <option value="in">in</option>
+            </select>
+            <label for="minDepthInput">Min Depth:</label>
+            <input type="number" id="minDepthInput">
+            <label for="maxDepthInput">Max Depth:</label>
+            <input type="number" id="maxDepthInput">
+            <button id="generateDips">Generate Dips</button>
+        </div>
+
+        <h3>Depth Measurements</h3>
+        <table id="depthTable">
+            <tr>
+                <th>Depth</th>
+                <th>Depth No.</th>
+                <th>+</th>
+                <th>-</th>
+            </tr>
+        </table>
     </div>
-
-    <h3>Depth Measurements</h3>
-    <table id="depthTable">
-        <tr>
-            <th>Depth</th>
-            <th>Depth No.</th>
-            <th>+</th>
-            <th>-</th>
-        </tr>
-    </table>
 
     <script src="script.js"></script>
 </body>
