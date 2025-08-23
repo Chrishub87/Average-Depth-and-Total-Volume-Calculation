@@ -51,3 +51,15 @@ table tr:nth-child(even) {
 table tr:hover {
 	background-color: #f5f5f5;
 }
+#dipConfig {
+        margin-bottom: 20px;
+}
+
+#dipConfig label {
+        margin-right: 5px;
+}
+
+#dipConfig input,
+#dipConfig select {
+        margin-right: 10px;
+}
