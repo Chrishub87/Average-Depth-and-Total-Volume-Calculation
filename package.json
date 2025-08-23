@@ -1,0 +1,18 @@
+{
+  "name": "average-depth-and-total-volume-calculation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"No tests specified\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-native": "^0.73.0",
+    "react-native-google-mobile-ads": "^12.0.0"
+  }
+}
