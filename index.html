@@ -12,6 +12,12 @@
 <body>
     <div class="container">
         <h1>Volume Calculator</h1>
+
+        <div id="adSection" class="ad-slot">
+            <p>Your ad here</p>
+        </div>
+        <button id="buyConcreasy">Buy Concreasy</button>
+
         <p>
             Enter the length and width measurements of the floor area in meters
             into their respective input fields. As you type the values, the Total Volume
@@ -19,19 +25,14 @@
             all the other values.
         </p>
 
-        <h2>Area A</h2>
+        <div id="areas"></div>
+        <button id="addArea" style="display:none">Add Area</button>
+
+        <h3>Results</h3>
         <table>
             <tr>
-                <td><label for="lengthInput">Length (m):</label></td>
-                <td><input type="number" id="lengthInput"></td>
-            </tr>
-            <tr>
-                <td><label for="widthInput">Width (m):</label></td>
-                <td><input type="number" id="widthInput"></td>
-            </tr>
-            <tr>
                 <td><p>Total Area:</p></td>
-                <td><span id="area">0</span> m<sup>2</sup></td>
+                <td><span id="totalArea">0</span> m<sup>2</sup></td>
             </tr>
             <tr>
                 <td><p>Total Volume:</p></td>
@@ -69,6 +70,7 @@
         </table>
     </div>
 
+    <script src="https://js.stripe.com/v3/"></script>
     <script src="script.js"></script>
 </body>
 </html>
