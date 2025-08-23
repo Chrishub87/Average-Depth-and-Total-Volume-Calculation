@@ -1,65 +1,98 @@
 body {
-	font-family: Arial, sans-serif;
-	line-height: 1.6;
-	margin: 20px;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 h1 {
-	text-align: center;
-	margin-bottom: 20px;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 p {
-	margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 table {
-	width: 100%;
-	border-collapse: collapse;
-	margin-bottom: 20px;
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
 }
 
 th, td {
-	padding: 10px;
-	border: 1px solid #ccc;
-	text-align: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
 }
 
-	td span.depthValue {
-		font-weight: bold;
-	}
+td span.depthValue {
+    font-weight: bold;
+}
 
 button {
-	padding: 5px 10px;
-	cursor: pointer;
+    padding: 8px 16px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.2s;
 }
 
-#area, #averageDeep, #totalVolume {
-	font-weight: bold;
-	font-size: 1.2em;
+button:hover {
+    background-color: #0056b3;
 }
 
-/* Optional styles to make the table more visually appealing */
+#area, #averageDepth, #totalVolume {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
 table th {
-	background-color: #f2f2f2;
+    background-color: #f0f0f0;
 }
 
 table tr:nth-child(even) {
-	background-color: #f9f9f9;
+    background-color: #fafafa;
 }
 
 table tr:hover {
-	background-color: #f5f5f5;
+    background-color: #f5f5f5;
 }
+
 #dipConfig {
-        margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
 #dipConfig label {
-        margin-right: 5px;
+    margin-right: 0;
 }
 
 #dipConfig input,
 #dipConfig select {
-        margin-right: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="number"],
+select {
+    width: 100%;
+    max-width: 120px;
 }
